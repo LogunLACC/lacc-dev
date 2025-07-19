@@ -103,9 +103,11 @@
 
 <script src="js/main.js"></script>z
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-    .catch(console.error);
+  // Register service worker at correct sub‑path on GitHub Pages or root elsewhere
+  if ('serviceWorker' in navigator) {
+    const base = window.location.pathname.startsWith('/lacc-dev') ? '/lacc-dev' : '';
+    navigator.serviceWorker.register(`${base}/service-worker.js`, { scope: `${base}/` }).catch(console.error);
+  }
 }
 </script>
 
