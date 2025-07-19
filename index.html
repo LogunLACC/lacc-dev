@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Lake Almanor Country Club</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A modern, member‑focused portal for Lake Almanor Country Club—golf, lake life, community updates, and governing documents." />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+
+<!-- HERO (cinematic video) -->
+<section class="full-width hero-video reveal">
+  <video class="hero-bg" autoplay muted loop playsinline poster="images/hero-poster.jpg" data-parallax data-speed="0.4">
+    <source src="media/hero-lake-loop.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay">
+    <h1 class="hero-title">Live the Lake • Love the Community</h1>
+    <a href="#welcome" class="btn">Explore</a>
+  </div>
+</section>
+
+<!-- WELCOME -->
+<main class="wrapper reveal" id="welcome">
+  <h2>Welcome to Lake Almanor Country Club!</h2>
+  <p>We are a 1,831‑home lakeside community nestled in Northern California’s Cascade / Sierra Nevada range. At 4,500 ft elevation and 52 miles of shoreline, LACC offers year‑round beauty and a summer season buzzing with golf, pickleball, concerts, and lake‑life magic.</p>
+</main>
+
+<!-- AMENITIES -->
+<section class="wrapper">
+  <h2 class="section-title reveal">Explore Our Amenities</h2>
+  <div class="amenities reveal">
+    <article class="card reveal">
+      <img src="images/golf.jpg" alt="Members playing golf" loading="lazy" />
+      <div class="card-body">
+        <h3>Nine‑Hole Golf</h3>
+        <p>A forgiving course with unbeatable mountain views. Tee times fill fast—book in the portal.</p>
+      </div>
+    </article>
+    <article class="card reveal">
+      <img src="images/pickleball.jpg" alt="Members playing pickleball" loading="lazy" />
+      <div class="card-body">
+        <h3>8 Pickleball Courts</h3>
+        <p>Come for the dink, stay for the social hour. Clinics every Wednesday.</p>
+      </div>
+    </article>
+    <article class="card reveal">
+      <img src="images/marina.jpg" alt="Boats at the marina" loading="lazy" />
+      <div class="card-body">
+        <h3>Private Marina Launches</h3>
+        <p>Three launches and kayak racks mean more time on the water—and less time fighting for a spot.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- NEED‑TO‑KNOW -->
+<section class="need-to-know">
+  <h2 class="section-title">Need&nbsp;to&nbsp;Know</h2>
+  <div class="need-grid">
+    <p><strong>Annual HOA Dues</strong><br/>
+       <a href="https://quickpay.frontsteps.com/?mgmtid=1543" target="_blank" rel="noopener">Pay or view balance</a></p>
+    <p><strong>Fire‑Wise Guidelines</strong><br/>
+       <a href="https://lakealmanorcountryclub.com/firewise-information/" target="_blank" rel="noopener">Defensible‑space checklist</a></p>
+    <p><strong>Governing Documents</strong><br/>
+       <a href="#documents">View &amp; download</a></p>
+  </div>
+</section>
+
+<!-- GOVERNING DOCUMENTS -->
+<section id="documents" class="docs-section reveal">
+  <h2 class="docs-title">Governing&nbsp;Documents</h2>
+  <ul class="docs-grid">
+    <li class="docs-card"><a href="https://drive.google.com/file/d/1L0_UhsWVUoqe5KQKFUoZlPL5RSAwJd4G/view?usp=sharing" target="_blank" rel="noopener">LACC CC&amp;Rs <span class="badge">PDF</span></a></li>
+    <!-- add more docs here -->
+  </ul>
+</section>
+
+<!-- DARK MODE TOGGLE -->
+<button id="themeToggle" aria-label="Toggle dark mode" class="btn toggle">🌓</button>
+
+<!-- FOOTER -->
+<footer>© 2025 Lake Almanor Country Club • 530‑596‑3282 • Designed with 🏆‑level love</footer>
+
+<script src="js/main.js"></script>z
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .catch(console.error);
+}
+</script>
+
+</body>
+</html>

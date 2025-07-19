@@ -1,0 +1,7 @@
+name = "lacc-dev"
+main = "worker.js"
+compatibility_date = "2025-07-19"
+
+[[r2_buckets]]
+binding     = "STATIC"
+bucket_name = "lacc-dev"      # your bucket’s exact name
