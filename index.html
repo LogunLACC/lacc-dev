@@ -108,7 +108,6 @@
     const base = window.location.pathname.startsWith('/lacc-dev') ? '/lacc-dev' : '';
     navigator.serviceWorker.register(`${base}/service-worker.js`, { scope: `${base}/` }).catch(console.error);
   }
-}
 </script>
 
 </body>
