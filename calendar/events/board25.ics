@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//LACC//Events//EN
+BEGIN:VEVENT
+SUMMARY:Board of Directors & LACC Solution-Building Discussion
+DTSTART;TZID="UTC-07:00":20250725T130000
+DTEND;TZID="UTC-07:00":20250725T140000
+DTSTAMP:20250721T192857Z
+UID:board25@lakealmanorcountryclub.com
+DESCRIPTION:Join Zoom Meeting: https://us06web.zoom.us/j/88212431383?pwd=Q
+ BL5IqabykL1LcDzwecBeKpBVRTc57.1   Meeting ID: 882Â 1243Â 1383   Passco
+ de: 414407   Details: https://lakealmanorcountryclub.frontsteps.com/commun
+ ity_events/svsNcn2EDUer98ptYzDaVzpU1NWUA6XpyQrr\n
+LOCATION:Clubhouse
+END:VEVENT
+END:VCALENDAR
