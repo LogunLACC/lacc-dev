@@ -35,7 +35,11 @@ body {
 
 
 /* ---------- Cinematic Hero ---------- */
-.hero-video { position: relative; height: 60vh; overflow: hidden; }
+.hero-video { 
+  position: relative; 
+  height: 60vh; 
+  overflow: hidden; 
+}
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -48,8 +52,14 @@ body {
 .hero-overlay {
   position: relative; z-index: 1;
   background: rgba(0, 75, 107, 0.6);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; color: #fff; padding: 0 1rem; height: 100%;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  text-align: center; 
+  color: #fff; 
+  padding: 0 1rem; 
+  height: 100%;
 }
 .hero-title {
   font-family: "Playfair Display", Georgia, serif;
@@ -76,25 +86,43 @@ body {
   z-index: 2;
 }
 @keyframes glint {
-  0%   { transform: translateX(-100%) skewX(-20deg); }
-  60%  { transform: translateX(100%)  skewX(-20deg); }
-  100% { transform: translateX(100%)  skewX(-20deg); }
+  0%   { 
+    transform: translateX(-100%) skewX(-20deg); 
+  }
+  60%  { 
+    transform: translateX(100%)  skewX(-20deg); 
+  }
+  100% { 
+    transform: translateX(100%)  skewX(-20deg); 
+  }
 }
 
 /* 2) hero title twinkle */
 
 .hero-title::after {
   content: "✨";
-  position: absolute; right: -1.2rem; top: -0.6rem;
+  position: absolute; 
+  right: -1.2rem; 
+  top: -0.6rem;
   font-size: 1rem;
-  opacity: 0; transform: scale(0.2);
+  opacity: 0; 
+  transform: scale(0.2);
   animation: titleSpark 4s infinite;
   z-index: 3;
 }
 @keyframes titleSpark {
-  0%,60%   { opacity: 0; transform: scale(0.2); }
-  70%      { opacity: 1; transform: scale(1);   }
-  90%,100% { opacity: 0; transform: scale(1.4); }
+  0%,60%   { 
+    opacity: 0; 
+    transform: scale(0.2); 
+  }
+  70%      { 
+    opacity: 1; 
+    transform: scale(1);   
+  }
+  90%,100% { 
+    opacity: 0; 
+    transform: scale(1.4); 
+  }
 }
 
 /* 3) docs-section title twinkle (same animation, tiny delay) */
@@ -157,10 +185,24 @@ body {
   transition: opacity 0.6s, transform 0.6s;
   pointer-events: none;
 }
-.btn:active::after { opacity: 1; transform: scale(2); transition: none; }
-.toggle { position: fixed; bottom: 1rem; right: 1rem; z-index: 999; transition: transform 0.3s; }
-.toggle:hover { transform: rotate(20deg) scale(1.2); }
-.theme-transition { transition: background 0.5s ease, color 0.5s ease; }
+.btn:active::after { 
+  opacity: 1; 
+  transform: scale(2); 
+  transition: none; 
+}
+.toggle { 
+  position: fixed;
+   bottom: 1rem; 
+   right: 1rem; 
+   z-index: 999; 
+   transition: transform 0.3s; 
+ }
+.toggle:hover { 
+  transform: rotate(20deg) scale(1.2); 
+}
+.theme-transition { 
+  transition: background 0.5s ease, color 0.5s ease; 
+}
 
 /* ---------- Layout Helpers ---------- */
 .wrapper { max-width: 1200px; margin: auto; padding: 2rem 1rem; }
@@ -174,7 +216,9 @@ body {
   container-type: inline-size;
 }
 .card {
-  background: #fff; border-radius: 8px; overflow: hidden;
+  background: #fff; 
+  border-radius: 8px; 
+  overflow: hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.06);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -189,31 +233,90 @@ body {
 .card-body h3 { margin-bottom: 0.3rem; }
 
 /* ---------- Need‑to‑Know Section ---------- */
-.need-to-know { background: #F6F9FC; padding: 3rem 1rem; text-align: center; }
-.need-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-.need-grid a { color: var(--lake); font-weight: 600; text-decoration: none; }
-.need-grid p { font-size: 0.9rem; }
+.need-to-know { 
+  background: #F6F9FC; 
+  padding: 3rem 1rem; 
+  text-align: center; 
+}
+.need-grid { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 2rem; 
+  justify-content: center; 
+}
+.need-grid a { 
+  color: var(--lake); 
+  font-weight: 600; 
+  text-decoration: none; }
+.need-grid p { font-size: 0.9rem; 
+}
 
 /* ---------- Governing Documents ---------- */
-.docs-section { background: #fff; padding: 3rem 1rem; }
-.docs-title { text-align: center; margin-bottom: 2rem; font-size: var(--step-3); }
+.docs-section { 
+  background: #fff; 
+  padding: 3rem 1rem; 
+}
+.docs-title { 
+  text-align: center; 
+  margin-bottom: 2rem; 
+  font-size: var(--step-3); 
+}
 .docs-grid {
-  list-style: none; padding: 0; margin: 0 auto; max-width: 1200px;
+  list-style: none; 
+  padding: 0; 
+  margin: 0 auto; 
+  max-width: 1200px;
   display: grid; gap: 1.2rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 .docs-card {
-  background: #fff; border: 1px solid #e5e7eb; border-radius: 6px;
+  background: #fff; 
+  border: 1px solid #e5e7eb; 
+  border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
 }
-.docs-card:hover { transform: translateY(-4px); box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
-.docs-card a { display: block; padding: 1.2rem 1rem; text-decoration: none; color: var(--text, var(--charcoal)); font-weight: 600; line-height: 1.4; }
-.badge { background: var(--sunset); color: #fff; font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; margin-left: 0.5rem; }
-
+.docs-card:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+}
+.docs-card a { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-wrap: balance;
+  word-break: break-word;
+  align-items: flex-start;
+  padding: 1.2rem 1rem;
+  width: 100%;
+  text-decoration: none; 
+  color: var(--text, var(--charcoal)); 
+  font-weight: 600; 
+  line-height: 1.4; 
+}
+.badge { 
+  background: var(--sunset); 
+  color: #fff; 
+  font-size: 0.7rem; 
+  padding: 0.15rem 0.45rem; 
+  border-radius: 4px; 
+  margin-left: 0.5rem; 
+}
 /* ---------- Footer ---------- */
-footer { text-align: center; font-size: 0.8rem; padding: 2rem 0; }
-
+footer { 
+  text-align: center; 
+  font-size: 0.8rem; 
+  padding: 2rem 0; 
+}
 /* ---------- Scroll‑Reveal ---------- */
-.reveal { opacity: 0; transform: translateY(40px); transition: 0.6s ease-out; }
-.reveal.show { opacity: 1; transform: none; }
+.reveal { 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: 0.6s ease-out; 
+}
+.reveal.show { 
+  opacity: 1; 
+  transform: none; 
+}
