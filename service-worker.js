@@ -22,10 +22,16 @@ const CORE_ASSETS = [
 
 self.addEventListener('install', evt => {
   evt.waitUntil(
-    caches.open(CORE_CACHE).then(cache => cache.addAll(CORE_ASSETS))
+    caches.open(CORE_CACHE).then(async cache => {
+      const results = await Promise.allSettled(CORE_ASSETS.map(u => cache.add(u)));
+      results.forEach(r => {
+        if (r.status === 'rejected') console.warn('SW cache miss:', r.reason?.message || r);
+      });
+    })
   );
   self.skipWaiting();
 });
+
 
 self.addEventListener('activate', evt => {
   evt.waitUntil(
