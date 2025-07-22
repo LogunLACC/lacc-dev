@@ -6,7 +6,7 @@
    • Each slide: event date badge + title + optional description
 ---------------------------------------------------------------- */
 
-import Swiper, { Navigation, Pagination, Autoplay } from "https://unpkg.com/swiper@11/swiper-bundle.esm.browser.min.js";
+import Swiper, { Navigation, Pagination, Autoplay } from "https://cdn.jsdeliver.net/npm/swiper@11/swiper-bundle.min.mjs";
 
 window.addEventListener("DOMContentLoaded", async () => {
   const wrap = document.getElementById("eventsCarousel");
