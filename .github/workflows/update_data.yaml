@@ -1,0 +1,75 @@
+name: Update events & alerts from Google Sheets
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:        # manual trigger as well
+
+jobs:
+  sync-sheets:
+    runs-on: ubuntu-latest
+
+    env:
+      # Replace with your Sheet IDs
+      EVENTS_SHEET_ID: "1UtBiKrASZpsGmpWuHgEy5rd9zx0AG27QQ70lsNJicl8"
+      ALERTS_SHEET_ID: "1Bms3tb1RKleGBE57mFkqWVFVuXr9-MzVeWQcRtkkZvI"
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install fetch & csv parser
+        run: npm install node-fetch@3 csv-parse@5 --save-dev
+
+      - name: Fetch Google Sheets & convert to JSON
+        run: |
+          node <<'SCRIPT'
+          import fetch from 'node-fetch';
+          import { parse } from 'csv-parse/sync';
+          import { writeFileSync } from 'fs';
+
+          const sheets = [
+            {
+              id: process.env.EVENTS_SHEET_ID,
+              out: 'data/events.json',
+              map: row => ({ date: row[0], title: row[1], desc: row[2] })
+            },
+            {
+              id: process.env.ALERTS_SHEET_ID,
+              out: 'data/alerts.json',
+              map: row => ({ message: row[0], level: row[1] })
+            }
+          ];
+
+          const fetchCsv = async id => {
+            const url = `https://docs.google.com/spreadsheets/d/${id}/export?format=csv`;
+            const res = await fetch(url);
+            return res.text();
+          };
+
+          for (const sheet of sheets) {
+            const csv = await fetchCsv(sheet.id);
+            const rows = parse(csv, { skip_empty_lines: true });
+            // drop header row
+            const data = rows.slice(1).map(sheet.map);
+            writeFileSync(sheet.out, JSON.stringify(data, null, 2));
+            console.log(`Wrote ${sheet.out}`);
+          }
+          SCRIPT
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          if [[ `git status --porcelain` ]]; then
+            git add data/*.json
+            git commit -m "chore: auto-sync sheets"
+            git push
+          else
+            echo "No data changes.";
+          fi
