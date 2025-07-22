@@ -11,8 +11,8 @@ jobs:
 
     env:
       # Replace with your Sheet IDs
-      EVENTS_SHEET_ID: "<YOUR_EVENTS_SHEET_ID>"
-      ALERTS_SHEET_ID: "<YOUR_ALERTS_SHEET_ID>"
+      EVENTS_SHEET_ID: "1UtBiKrASZpsGmpWuHgEy5rd9zx0AG27QQ70lsNJicl8"
+      ALERTS_SHEET_ID: "1Bms3tb1RKleGBE57mFkqWVFVuXr9-MzVeWQcRtkkZvI"
 
     steps:
       - name: Checkout repo
