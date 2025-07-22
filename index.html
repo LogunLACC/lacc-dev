@@ -24,7 +24,8 @@
   <!-- Leaflet CDN -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
   
-
+  <!-- Events -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css">
 
 
 </head>
@@ -102,7 +103,19 @@
     <li class="docs-card"><a href="https://form.jotform.com/250310510092136" target="_blank" rel="noopener">Member's Rental Permit<span class="badge">ONLINE</span></a></li>
     <li class="docs-card"><a href="https://form.jotform.com/243476914309059" target="_blank" rel="noopener">Renter Registration<span class="badge">ONLINE</span></a></li>
   </ul>
-</section> | 
+</section>
+
+<!-- Events Section -->
+<section class="wrapper" id="events">
+  <h2 class="section-title reveal">Upcoming Events</h2>
+
+  <div id="eventsCarousel" class="swiper">
+    <div class="swiper-wrapper"></div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
 
 <!-- AMENITY MAP -->
 <section class="full-width" id="map">
@@ -127,7 +140,10 @@
   }
 </script>
 
+<!-- Map -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<!-- Events -->
+<script type="module" src="js/events-carousel.js" defer></script>
 
 </body>
 </html>
