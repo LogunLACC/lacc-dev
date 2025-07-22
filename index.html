@@ -20,6 +20,12 @@
   <link rel="icon" href="icons/icon-512.png" type="image/png" sizes="512x512">
   <link rel="apple-touch-icon" href="icons/apple.png" sizes="192x192">
 
+  <!-- Leaflet -->
+  <!-- Leaflet CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
+  
+
+
 
 </head>
 <body>
@@ -95,6 +101,14 @@
   </ul>
 </section>
 
+<!-- AMENITY MAP -->
+<section class="full-width" id="map">
+  <h2 class="section-title">Interactive Amenity Map</h2>
+  <div id="amenityMap" style="height: 500px;"></div>
+</section>
+<script src="js/amenity-map.js" defer></script>
+
+
 <!-- DARK MODE TOGGLE -->
 <button id="themeToggle" aria-label="Toggle dark mode" class="btn toggle">🌓</button>
 
@@ -109,6 +123,8 @@
     navigator.serviceWorker.register(`${base}/service-worker.js`, { scope: `${base}/` }).catch(console.error);
   }
 </script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 
 </body>
 </html>
