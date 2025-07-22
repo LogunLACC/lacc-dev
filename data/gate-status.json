@@ -1,6 +1,6 @@
 {
   "gate": "Peninsula",
-  "status": "closed",          // open | closed | delay
+  "status": "closed",
   "until": "2025-07-25T14:30:00-07:00",
   "message": "Power outage—use Clifford Gate"
 }
