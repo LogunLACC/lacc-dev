@@ -1,54 +1,43 @@
 /* -------------------------------------------------------------
-   LACC Phase 3 – Events Feed Carousel
+   LACC Phase 3 – Events Feed Carousel (Global Swiper build)
    -------------------------------------------------------------
-   • Fetches events from /data/events.json (static in repo)
-   • Renders Swiper.js carousel (autoplay + swipe/drag)
-   • Each slide: event date badge + title + optional description
+   • Fetches events from /data/events.json
+   • Uses Swiper 11 global build loaded via <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 ---------------------------------------------------------------- */
 
-import Swiper, { Navigation, Pagination, Autoplay } from "https://cdn.jsdeliver.net/npm/swiper@11/swiper-bundle.min.mjs";
-
-window.addEventListener("DOMContentLoaded", async () => {
-  const wrap = document.getElementById("eventsCarousel");
-  if (!wrap) return;
+window.addEventListener('DOMContentLoaded', async () => {
+  const wrapper = document.querySelector('#eventsCarousel .swiper-wrapper');
+  if (!wrapper) return;
 
   try {
-    const res   = await fetch("data/events.json");
+    const res    = await fetch('data/events.json');
     const events = await res.json();
 
-    // build slides
-    const slides = events.map(ev => {
+    // Build slide markup
+    wrapper.innerHTML = events.map(ev => {
       const date = new Date(ev.date);
-      const options = { month:"short", day:"numeric" };
-      const dayStr = date.toLocaleDateString(undefined, options);
-
+      const badge = date.toLocaleDateString(undefined, { month:'short', day:'numeric' });
       return `<div class="swiper-slide">
-        <article class="event-card">
-          <span class="event-date">${dayStr}</span>
-          <h3>${ev.title}</h3>
-          ${ev.desc ? `<p>${ev.desc}</p>` : ""}
-        </article>
-      </div>`;
-    }).join("");
+                <article class="event-card">
+                  <span class="event-date">${badge}</span>
+                  <h3>${ev.title}</h3>
+                  ${ev.desc ? `<p>${ev.desc}</p>` : ''}
+                </article>
+              </div>`;
+    }).join('');
 
-    wrap.querySelector(".swiper-wrapper").innerHTML = slides;
-
-    // init Swiper
-    new Swiper("#eventsCarousel", {
-      modules:[Navigation, Pagination, Autoplay],
+    // Init Swiper (global)
+    new Swiper('#eventsCarousel', {
       slidesPerView:1,
       spaceBetween:16,
       loop:true,
       autoplay:{ delay:5000, disableOnInteraction:false },
-      pagination:{ el:".swiper-pagination", clickable:true },
-      navigation:{ nextEl:".swiper-button-next", prevEl:".swiper-button-prev" },
-      breakpoints:{
-        640:{ slidesPerView:2 },
-        1024:{ slidesPerView:3 }
-      }
+      pagination:{ el:'.swiper-pagination', clickable:true },
+      navigation:{ nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev' },
+      breakpoints:{ 640:{ slidesPerView:2 }, 1024:{ slidesPerView:3 } }
     });
   } catch (err) {
-    console.error("Events carousel error", err);
-    wrap.innerHTML = "<p style=\"text-align:center\">Events feed unavailable.</p>";
+    console.error('Events feed error', err);
+    wrapper.innerHTML = '<p style="grid-column:1/-1;text-align:center">Events feed unavailable.</p>';
   }
 });
