@@ -1,4 +1,6 @@
-{
-  "message": "High fire danger today – no charcoal grills!",
-  "level": "danger"
-}
+[
+  {
+    "message": "High fire danger today.",
+    "level": "danger"
+  }
+]
