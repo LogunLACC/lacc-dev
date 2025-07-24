@@ -4,13 +4,14 @@
    • addAll replaced with individual add() wrapped in try/catch
    ------------------------------------------------------------- */
 
-const VERSION      = 'v2.1';
+const VERSION      = 'v2.2';
 const CORE_CACHE   = `core-${VERSION}`;
 const PDF_CACHE    = `pdf-${VERSION}`;
 
 const CORE_ASSETS = [
   '/',
   '/lacc-dev/',
+  '/index.html',
   '/lacc-dev/index.html',
   '/lacc-dev/css/style.css',
   '/lacc-dev/js/main.js',
@@ -55,6 +56,12 @@ self.addEventListener('fetch', evt => {
   // Core assets – cache first
   if (CORE_ASSETS.includes(url.pathname) || ['style','script','image'].includes(request.destination)) {
     evt.respondWith(cacheFirst(request, CORE_CACHE));
+    return;
+   }
+
+   // HTML pages – network first with offline fallback
+   if (request.mode === 'navigate') {
+    evt.respondWith(networkFirst(request, CORE_CACHE, '/index.html'));
   }
 });
 
@@ -69,7 +76,7 @@ async function cacheFirst(req, cacheName) {
   return res;
 }
 
-async function networkFirst(req, cacheName) {
+async function networkFirst(req, cacheName, fallbackPath) {
   const cache = await caches.open(cacheName);
   try {
     const res = await fetch(req);
@@ -78,6 +85,10 @@ async function networkFirst(req, cacheName) {
   } catch (err) {
     const cached = await cache.match(req);
     if (cached) return cached;
+    if (fallbackPath) {
+       const fallback = await cache.match(fallbackPath);
+       if (fallback) return fallback;
+     }
     return new Response('Service unavailable', { status: 503 });
   }
 }
