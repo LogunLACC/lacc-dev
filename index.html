@@ -34,7 +34,7 @@
 
 <!-- HERO (cinematic video) -->
 <section class="full-width hero-video reveal">
-  <video class="hero-bg" autoplay muted loop playsinline poster="images/hero-poster.jpg" data-parallax data-speed="0.4">
+  <video class="hero-bg" autoplay muted loop playsinline poster="images/hero-poster.jpg" data-parallax data-speed="0.4" aria-hidden="true">
     <source src="media/hero-lake-fixed.mp4" type="video/mp4" />
   </video>
   <div class="hero-overlay">
@@ -122,7 +122,7 @@
 <!-- AMENITY MAP -->
 <section class="full-width" id="map">
   <h2 class="section-title">Interactive Amenity Map</h2>
-  <div id="amenityMap" style="height: 500px;"></div>
+  <div id="amenityMap" role="application" aria-label="Interactive amenity map" style="height: 500px;"></div>
 </section>
 <script src="js/amenity-map.js" defer></script>
 
