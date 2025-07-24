@@ -1,6 +1,4 @@
-[
-  {
-    "message": "High fire danger today.",
-    "level": "danger"
-  }
-]
+{
+  "message": "High fire danger today.",
+  "level": "danger"
+}
