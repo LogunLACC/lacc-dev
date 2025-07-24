@@ -361,3 +361,17 @@ footer {
   background:var(--sunset);color:#fff;font-size:.8rem;font-weight:600;
   padding:.25rem .55rem;border-radius:4px;
 }
+
+/* ---------- Dark Mode Overrides ---------- */
+[data-theme="dark"] .card,
+[data-theme="dark"] .docs-card,
+[data-theme="dark"] .event-card {
+  color: var(--charcoal);
+}
+[data-theme="dark"] .docs-section,
+[data-theme="dark"] .need-to-know {
+  background: #111;
+}
+[data-theme="dark"] .docs-card a {
+  color: var(--charcoal);
+}
