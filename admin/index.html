@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LACC Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="../js/admin.js" defer></script>
+  <style>
+    form{display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem;max-width:320px}
+    label{font-weight:600}
+    input,select,button{padding:.45rem;border:1px solid #ccc;border-radius:4px}
+    .toast{position:fixed;top:1rem;right:1rem;padding:.75rem 1rem;border-radius:8px;color:#fff;font-weight:600;box-shadow:0 4px 10px rgba(0,0,0,.15);z-index:1000}
+    .success{background:#2563eb}
+    .error{background:#dc2626}
+  </style>
+</head>
+<body x-data>
+  <h1>Admin Panel</h1>
+  <section>
+    <h2>Gate Status</h2>
+    <form hx-post="/api/gate-status" hx-swap="none">
+      <label>Gate <input name="gate" required></label>
+      <label>Status
+        <select name="status">
+          <option value="open">open</option>
+          <option value="closed">closed</option>
+          <option value="delay">delay</option>
+        </select>
+      </label>
+      <label>Until <input type="datetime-local" name="until"></label>
+      <label>Message <input name="message"></label>
+      <button type="submit">Update Gate</button>
+    </form>
+  </section>
+  <section>
+    <h2>Member Alert</h2>
+    <form hx-post="/api/alert" hx-swap="none">
+      <label>Message <input name="message" required></label>
+      <label>Level
+        <select name="level">
+          <option value="info">info</option>
+          <option value="warning">warning</option>
+          <option value="danger">danger</option>
+        </select>
+      </label>
+      <button type="submit">Send Alert</button>
+    </form>
+  </section>
+  <div x-show="open" x-transition.opacity x-ref="toast" class="toast" x-bind:class="type" x-text="msg" style="display:none"></div>
+</body>
+</html>

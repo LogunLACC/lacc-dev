@@ -4,4 +4,13 @@ compatibility_date = "2025-07-19"
 
 [[r2_buckets]]
 binding     = "STATIC"
-bucket_name = "lacc-dev"      # your bucket’s exact name
+bucket_name = "lacc-dev"  
+
+[[kv_namespaces]]
+binding = "lacc_admin"
+# replace with your namespace ID
+id = "00000000000000000000000000000000"
+
+[vars]
+# Bearer token for admin API
+ADMIN_TOKEN = ""
