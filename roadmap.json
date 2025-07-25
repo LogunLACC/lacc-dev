@@ -1,0 +1,88 @@
+{
+  "tasks": [
+    {
+      "id": "real-time-gate-alerts",
+      "title": "Real‑Time Gate Status Alerts",
+      "status": "todo",
+      "description": "Fetch `gate-status.json` and display toast alerts when a gate opens, closes, or delays.",
+      "dependsOn": ["toast-notifications"]
+    },
+    {
+      "id": "admin-announcements-feed",
+      "title": "Admin Announcements Carousel",
+      "status": "todo",
+      "description": "Build a carousel driven by `alerts.json` so admins can post news, bulletins, or warnings.",
+      "dependsOn": ["real-time-gate-alerts"]
+    },
+    {
+      "id": "itinerary-tool",
+      "title": "Member Itinerary Planner",
+      "status": "todo",
+      "description": "Let members pick amenity markers on the map and build/share a trip itinerary.",
+      "dependsOn": ["amenity-map"]
+    },
+    {
+      "id": "amenity-info-popups",
+      "title": "Amenity Info Pop‑ups",
+      "status": "todo",
+      "description": "Add rich pop‑ups on each map marker with images, hours, and booking links.",
+      "dependsOn": ["amenity-map"]
+    },
+    {
+      "id": "service-worker-cache",
+      "title": "Service Worker: Asset Caching & Offline Fallback",
+      "status": "todo",
+      "description": "Enhance `service-worker.js` to precache core assets and serve a friendly offline page.",
+      "dependsOn": ["admin-announcements-feed"]
+    },
+    {
+      "id": "generate-pwa-manifest",
+      "title": "Web App Manifest & Icons",
+      "status": "todo",
+      "description": "Create `manifest.webmanifest` and a full set of optimized icons for “Add to Home Screen.”",
+      "dependsOn": ["service-worker-cache"]
+    },
+    {
+      "id": "seo-metadata",
+      "title": "SEO & Social‑Share Metadata",
+      "status": "todo",
+      "description": "Add structured data (JSON‑LD), OpenGraph/Twitter tags, and improve headings for SEO.",
+      "dependsOn": ["generate-pwa-manifest"]
+    },
+    {
+      "id": "accessibility-audit",
+      "title": "Accessibility Audit & Fixes",
+      "status": "todo",
+      "description": "Ensure WCAG compliance: color contrast, keyboard nav, ARIA roles, skip links, semantic HTML.",
+      "dependsOn": ["seo-metadata"]
+    },
+    {
+      "id": "performance-optimizations",
+      "title": "Performance & Lighthouse 90+",
+      "status": "todo",
+      "description": "Optimize images/video, minify/inline critical CSS, lazy‑load non‑critical assets, hit 90+ in all Lighthouse categories.",
+      "dependsOn": ["accessibility-audit"]
+    },
+    {
+      "id": "cross-browser-testing",
+      "title": "Cross‑Browser & Device QA",
+      "status": "todo",
+      "description": "Test on Chrome, Safari, Firefox, Edge, iOS/Android—fix any rendering or JS issues.",
+      "dependsOn": ["performance-optimizations"]
+    },
+    {
+      "id": "final-design-polish",
+      "title": "Final Design & Micro‑Interactions",
+      "status": "todo",
+      "description": "Add subtle hover/scroll animations, refine timing curves, and polish all micro‑interactions.",
+      "dependsOn": ["cross-browser-testing"]
+    },
+    {
+      "id": "webby-submission",
+      "title": "Prepare & Submit to Webby Awards",
+      "status": "todo",
+      "description": "Capture production screenshots/videos, write the site description, gather metadata, and submit for judging.",
+      "dependsOn": ["final-design-polish"]
+    }
+  ]
+}
