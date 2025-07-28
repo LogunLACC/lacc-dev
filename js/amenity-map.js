@@ -56,15 +56,15 @@ window.addEventListener("DOMContentLoaded", async () => {
   });
 
   // Add markers
-  amenities.forEach(({ name, lat, lng, img, hours, booking }) => {
-    const m = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
-    const gmaps = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-    let html = `<strong>${name}</strong>`;
-    if (img) html += `<br><img src='${img}' alt='${name}' />`;
-    if (hours) html += `<br><small>${hours}</small>`;
-    if (booking) html += `<br><a href='${booking}' target='_blank' rel='noopener'>Book Now</a>`;
-    html += `<br><a href='${gmaps}' target='_blank' rel='noopener'>Get Directions</a>`;
-    m.bindPopup(html);
+  amenities.forEach(item => {
+    const marker = L.marker([item.lat, item.lng]).addTo(map);
+    const html = `
+      <h3>${item.name}</h3>
+      <img src="${item.image}" alt="${item.name}" style="width:100%;border-radius:6px;" />
+      <p>Hours: ${item.hours}</p>
+      <p><a href="${item.link}" target="_blank" rel="noopener">More info</a></p>
+    `;
+    marker.bindPopup(html);
   });
 
   // Fit all pins
