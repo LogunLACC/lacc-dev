@@ -136,7 +136,7 @@
     {
       "id": "amenity-info-popups",
       "title": "Amenity Info Pop‑ups",
-      "status": "todo",
+      "status": "complete",
       "description": "Enhance map markers with images, hours, and booking links in pop‑ups.",
       "dependsOn": ["amenity-map"]
     },

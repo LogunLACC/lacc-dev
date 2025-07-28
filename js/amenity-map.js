@@ -6,10 +6,10 @@
    • Map container: <div id="amenityMap"></div> – 100% width / 500px height.
 ---------------------------------------------------------------- */
 
-// Amenity data (lat, lng, name, optional Google Maps link)
-const amenities = [
+// Default amenity data (lat, lng, name) used if fetch fails
+const defaultAmenities = [
   { name: "Golf Course & Clubhouse",        lat: 40.24763,           lng: -121.15100 },
-  { name: "Bandshell – Music Under the Stars", lat: 40.24541,           lng: -121.144411 },
+  { name: "Bandshell – Music Under the Stars", lat: 40.24541,         lng: -121.144411 },
   { name: "Sports Center – Rec 1",          lat: 40.24631,           lng: -121.14436 },
   { name: "Rec 1 – Boat Launch",            lat: 40.2423715315,      lng: -121.1427536425 },
   { name: "Rec 2",                           lat: 40.2392896501,      lng: -121.1505879180 },
@@ -20,9 +20,16 @@ const amenities = [
 ];
 
 // Initialize map once DOM loads
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   const mapEl = document.getElementById("amenityMap");
   if (!mapEl) return;
+
+  // Load amenity data
+  let amenities = defaultAmenities;
+  try {
+    const res = await fetch('data/amenities.json');
+    if (res.ok) amenities = await res.json();
+  } catch (e) { console.warn('Amenity data fetch failed', e); }
 
   // Basic Leaflet init
   const map = L.map("amenityMap", {
@@ -46,10 +53,15 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // Add markers
-  amenities.forEach(({ name, lat, lng }) => {
+  amenities.forEach(({ name, lat, lng, img, hours, booking }) => {
     const m = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
     const gmaps = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-    m.bindPopup(`<strong>${name}</strong><br><a href='${gmaps}' target='_blank' rel='noopener'>Get Directions</a>`);
+    let html = `<strong>${name}</strong>`;
+    if (img) html += `<br><img src='${img}' alt='${name}' />`;
+    if (hours) html += `<br><small>${hours}</small>`;
+    if (booking) html += `<br><a href='${booking}' target='_blank' rel='noopener'>Book Now</a>`;
+    html += `<br><a href='${gmaps}' target='_blank' rel='noopener'>Get Directions</a>`;
+    m.bindPopup(html);
   });
 
   // Fit all pins
