@@ -1,4 +1,4 @@
-const URL   = 'data/gate-status.json';
+//const URL   = 'data/gate-status.json';
 const CHECK = 5 * 60 * 1000;      // 5‑min poll
 let gateToast;
 
