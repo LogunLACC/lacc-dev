@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Golf Course & Clubhouse",
+    "lat": 40.24763,
+    "lng": -121.15100,
+    "img": "images/golf.jpg",
+    "hours": "7am – 7pm Daily",
+    "booking": "https://members.lakealmanorcountryclub.com/golf-booking"
+  },
+  {
+    "name": "Bandshell – Music Under the Stars",
+    "lat": 40.24541,
+    "lng": -121.144411,
+    "img": null,
+    "hours": "See event schedule",
+    "booking": null
+  },
+  {
+    "name": "Sports Center – Rec 1",
+    "lat": 40.24631,
+    "lng": -121.14436,
+    "img": "images/pickleball.jpg",
+    "hours": "8am – 8pm Daily",
+    "booking": "https://members.lakealmanorcountryclub.com/pickleball-reserve"
+  },
+  {
+    "name": "Rec 1 – Boat Launch",
+    "lat": 40.2423715315,
+    "lng": -121.1427536425,
+    "img": "images/marina.jpg",
+    "hours": "5am – 9pm Daily",
+    "booking": "https://members.lakealmanorcountryclub.com/slip-reservations"
+  },
+  { "name": "Rec 2", "lat": 40.2392896501, "lng": -121.1505879180 },
+  { "name": "Rec 3 – Frisbee Golf", "lat": 40.2489205279, "lng": -121.1429040060 },
+  { "name": "Peninsula Gate", "lat": 40.2695793687, "lng": -121.1264990975 },
+  { "name": "LACC Admin Office", "lat": 40.2695982993, "lng": -121.1268994172 },
+  {
+    "name": "Main Gate – Clifford Gate (Security)",
+    "lat": 40.2630407497,
+    "lng": -121.1478179403
+  }
+]
