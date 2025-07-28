@@ -1,6 +1,125 @@
 {
   "tasks": [
     {
+      "id": "toast-notifications",
+      "title": "Reusable Toast Notification Module",
+      "status": "complete",
+      "description": "Create a non‑blocking toast component for info/warning/danger messages.",
+      "dependsOn": []
+    },
+    {
+      "id": "events-carousel",
+      "title": "Upcoming Events Carousel",
+      "status": "complete",
+      "description": "Load `events.json` and render a swipeable Swiper.js carousel of upcoming events.",
+      "dependsOn": ["toast-notifications"]
+    },
+    {
+      "id": "amenity-map",
+      "title": "Interactive Amenity Map",
+      "status": "complete",
+      "description": "Render a Leaflet map with amenity markers and custom pop‑ups.",
+      "dependsOn": ["events-carousel"]
+    },
+    {
+      "id": "parallax-animation",
+      "title": "Interactive Parallax Animation",
+      "status": "complete",
+      "description": "Add scroll‑based parallax effect to elements marked `[data-parallax]`.",
+      "dependsOn": ["amenity-map"]
+    },
+    {
+      "id": "micro-animations",
+      "title": "Micro‑animations on Hover/Tap",
+      "status": "complete",
+      "description": "Subtle grow/pulse animations on buttons and cards using CSS keyframes.",
+      "dependsOn": ["parallax-animation"]
+    },
+    {
+      "id": "cinematic-hero-video",
+      "title": "Cinematic Hero Video Loop",
+      "status": "complete",
+      "description": "Replace static hero image with optimized, endlessly-looped MP4 background.",
+      "dependsOn": ["micro-animations"]
+    },
+    {
+      "id": "dark-mode-transition",
+      "title": "Dark‑Mode Toggle with Smooth Transition",
+      "status": "complete",
+      "description": "Animate the theme toggle (moon rotate, color fade) and persist choice in `localStorage`.",
+      "dependsOn": ["cinematic-hero-video"]
+    },
+    {
+      "id": "svg-wave-overlay",
+      "title": "SVG Wave Overlay",
+      "status": "skipped",
+      "description": "Wave overlay idea was removed per design feedback.",
+      "dependsOn": []
+    },
+    {
+      "id": "migrate-hero-section",
+      "title": "Migrate Hero Section Content",
+      "status": "complete",
+      "description": "Recreate the hero section from the current site: background, overlay title, and 'Explore' CTA.",
+      "dependsOn": ["dark-mode-transition"]
+    },
+    {
+      "id": "migrate-welcome-section",
+      "title": "Migrate Welcome Section",
+      "status": "complete",
+      "description": "Add the 'Welcome to Lake Almanor Country Club' section with community overview text.",
+      "dependsOn": ["migrate-hero-section"]
+    },
+    {
+      "id": "migrate-amenities-section",
+      "title": "Migrate Amenities Section",
+      "status": "complete",
+      "description": "Rebuild the amenities grid: golf, pickleball, marina launches with images and descriptions.",
+      "dependsOn": ["migrate-welcome-section"]
+    },
+    {
+      "id": "migrate-need-to-know",
+      "title": "Migrate Need‑to‑Know Section",
+      "status": "complete",
+      "description": "Add the 'Need to Know' grid with HOA dues, Mutual Water Dues, Fire‑Wise guidelines, and governing documents links.",
+      "dependsOn": ["migrate-amenities-section"]
+    },
+    {
+      "id": "add-renter-handbook",
+      "title": "Add Renter's Handbook PDF",
+      "status": "todo",
+      "description": "Include Renter's Handbook link in the Governing Documents section.",
+      "dependsOn": ["migrate-need-to-know"]
+    },
+    {
+      "id": "add-rental-permit-online",
+      "title": "Add Member's Rental Permit Link",
+      "status": "todo",
+      "description": "Add external link to Member's Rental Permit online form in Documents.",
+      "dependsOn": ["migrate-need-to-know"]
+    },
+    {
+      "id": "add-renter-registration-online",
+      "title": "Add Renter Registration Link",
+      "status": "todo",
+      "description": "Add external link to Renter Registration form in Documents.",
+      "dependsOn": ["migrate-need-to-know"]
+    },
+    {
+      "id": "migrate-documents-section",
+      "title": "Migrate Governing Documents Section",
+      "status": "complete",
+      "description": "Recreate the downloadable PDFs grid for CC&Rs, bylaws, member handbook, fees schedule, mission statement, and rental resources.",
+      "dependsOn": ["migrate-need-to-know"]
+    },
+    {
+      "id": "migrate-footer-contact",
+      "title": "Migrate Footer and Contact Info",
+      "status": "complete",
+      "description": "Add footer text (©2025 LACC, phone number) and ensure secure external links.",
+      "dependsOn": ["migrate-documents-section"]
+    },
+    {
       "id": "real-time-gate-alerts",
       "title": "Real‑Time Gate Status Alerts",
       "status": "todo",
@@ -15,17 +134,17 @@
       "dependsOn": ["real-time-gate-alerts"]
     },
     {
+      "id": "amenity-info-popups",
+      "title": "Amenity Info Pop‑ups",
+      "status": "todo",
+      "description": "Enhance map markers with images, hours, and booking links in pop‑ups.",
+      "dependsOn": ["amenity-map"]
+    },
+    {
       "id": "itinerary-tool",
       "title": "Member Itinerary Planner",
       "status": "todo",
       "description": "Let members pick amenity markers on the map and build/share a trip itinerary.",
-      "dependsOn": ["amenity-map"]
-    },
-    {
-      "id": "amenity-info-popups",
-      "title": "Amenity Info Pop‑ups",
-      "status": "todo",
-      "description": "Add rich pop‑ups on each map marker with images, hours, and booking links.",
       "dependsOn": ["amenity-map"]
     },
     {
@@ -50,11 +169,18 @@
       "dependsOn": ["generate-pwa-manifest"]
     },
     {
+      "id": "analytics-integration",
+      "title": "Analytics & Tracking Integration",
+      "status": "todo",
+      "description": "Integrate Google Analytics (or similar) and track key events (form clicks, portal visits).",
+      "dependsOn": ["seo-metadata"]
+    },
+    {
       "id": "accessibility-audit",
       "title": "Accessibility Audit & Fixes",
       "status": "todo",
       "description": "Ensure WCAG compliance: color contrast, keyboard nav, ARIA roles, skip links, semantic HTML.",
-      "dependsOn": ["seo-metadata"]
+      "dependsOn": ["analytics-integration"]
     },
     {
       "id": "performance-optimizations",
@@ -79,9 +205,9 @@
     },
     {
       "id": "webby-submission",
-      "title": "Prepare & Submit to Webby Awards",
+      "title": "Prepare & Submit to the Webby Awards",
       "status": "todo",
-      "description": "Capture production screenshots/videos, write the site description, gather metadata, and submit for judging.",
+      "description": "Capture screenshots/videos, write the site narrative, gather assets, and submit for judging.",
       "dependsOn": ["final-design-polish"]
     }
   ]
