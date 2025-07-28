@@ -16,6 +16,7 @@ const CORE_ASSETS = [
   '/lacc-dev/css/style.css',
   '/lacc-dev/js/main.js',
   '/lacc-dev/js/events-carousel.js',
+  '/lacc-dev/js/announcements-carousel.js',
   '/lacc-dev/js/amenity-map.js',
   '/lacc-dev/js/alert-toast.js',
   '/lacc-dev/js/gate-alert.js',

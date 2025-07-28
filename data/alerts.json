@@ -1,4 +1,5 @@
-{
-  "message": "High fire danger today.",
-  "level": "danger"
-}
+[
+  { "message": "High fire danger today.", "level": "danger" },
+  { "message": "Board meeting moved to Monday 7pm.", "level": "info" },
+  { "message": "Marina closed for maintenance Friday.", "level": "warning" }
+]

@@ -375,3 +375,15 @@ footer {
 [data-theme="dark"] .docs-card a {
   color: var(--charcoal);
 }
+
+/* ---------- Announcements Carousel ---------- */
+#alertsCarousel { position: relative; margin-block: 2rem; }
+.announce-card {
+  background:#fff;border-radius:8px;padding:1rem;font-weight:600;
+  box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;align-items:center;
+  justify-content:center;text-align:center;min-height:80px;
+}
+.announce-card.info { background:#2563eb;color:#fff; }
+.announce-card.warning { background:#e37b40;color:#fff; }
+.announce-card.danger { background:#dc2626;color:#fff; }
+

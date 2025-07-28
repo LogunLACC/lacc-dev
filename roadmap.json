@@ -129,7 +129,7 @@
     {
       "id": "admin-announcements-feed",
       "title": "Admin Announcements Carousel",
-      "status": "todo",
+      "status": "complete",
       "description": "Build a carousel driven by `alerts.json` so admins can post news, bulletins, or warnings.",
       "dependsOn": ["real-time-gate-alerts"]
     },
