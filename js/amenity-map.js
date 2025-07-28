@@ -28,7 +28,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   let amenities = defaultAmenities;
   try {
     const res = await fetch('data/amenities.json');
-    if (res.ok) amenities = await res.json();
+    if (res.ok) {
+      amenities = await res.json();
+      console.log('Loaded amenities:', amenities);
+    }
   } catch (e) { console.warn('Amenity data fetch failed', e); }
 
   // Basic Leaflet init
