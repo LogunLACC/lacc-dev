@@ -87,21 +87,21 @@
     {
       "id": "add-renter-handbook",
       "title": "Add Renter's Handbook PDF",
-      "status": "todo",
+      "status": "complete",
       "description": "Include Renter's Handbook link in the Governing Documents section.",
       "dependsOn": ["migrate-need-to-know"]
     },
     {
       "id": "add-rental-permit-online",
       "title": "Add Member's Rental Permit Link",
-      "status": "todo",
+      "status": "complete",
       "description": "Add external link to Member's Rental Permit online form in Documents.",
       "dependsOn": ["migrate-need-to-know"]
     },
     {
       "id": "add-renter-registration-online",
       "title": "Add Renter Registration Link",
-      "status": "todo",
+      "status": "complete",
       "description": "Add external link to Renter Registration form in Documents.",
       "dependsOn": ["migrate-need-to-know"]
     },
@@ -115,14 +115,14 @@
     {
       "id": "migrate-footer-contact",
       "title": "Migrate Footer and Contact Info",
-      "status": "complete",
+      "status": "todo",
       "description": "Add footer text (©2025 LACC, phone number) and ensure secure external links.",
       "dependsOn": ["migrate-documents-section"]
     },
     {
       "id": "real-time-gate-alerts",
       "title": "Real‑Time Gate Status Alerts",
-      "status": "todo",
+      "status": "complete",
       "description": "Fetch `gate-status.json` and display toast alerts when a gate opens, closes, or delays.",
       "dependsOn": ["toast-notifications"]
     },
