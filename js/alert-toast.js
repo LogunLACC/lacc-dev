@@ -7,7 +7,7 @@
 ---------------------------------------------------------------- */
 
 const ALERT_URL     = 'data/alerts.json';
-const STREAM_URL    = '/alerts/stream';
+const STREAM_URL    = 'data/alerts.json';
 const POLL_INTERVAL = 30000;                     // 30 s fallback poll
 const ALERT_LEVEL = {
   info:    { bg:'#2563eb', txt:'#fff' },        // blue
