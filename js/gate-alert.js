@@ -16,7 +16,7 @@ function makeToast(txt, level = 'danger') {
 
 async function checkGate() {
   try {
-    const res = await fetch('data/alerts.json', { cache: 'no-store' });
+    const res = await fetch('data/gate-status.json', { cache: 'no-store' });
     if (!res.ok) return;
     const { status, gate, until, message } = await res.json();
 
