@@ -1,14 +1,13 @@
 /* -------------------------------------------------------------
-   LACC Phase 4 – Realtime Alert Toast
+   LACC Phase 4 – Alert Toast
    -------------------------------------------------------------
-   • Listens to /alerts/stream via SSE with 30 s poll fallback
+   • Loads alerts from alerts.json every 5 min
    • level ∈ "info" | "warning" | "danger" (red)
    • Auto‑dismiss after 30 s; swipe‑to‑close on mobile
 ---------------------------------------------------------------- */
 
 const ALERT_URL     = 'data/alerts.json';
-const STREAM_URL    = 'data/alerts.json';
-const POLL_INTERVAL = 30000;                     // 30 s fallback poll
+const POLL_INTERVAL = 5 * 60 * 1000;             // refresh every 5 min
 const ALERT_LEVEL = {
   info:    { bg:'#2563eb', txt:'#fff' },        // blue
   warning: { bg:'#e37b40', txt:'#fff' },        // sunset orange
@@ -53,27 +52,20 @@ function handleAlert(alert) {
   renderToast(alert.message, alert.level);
 }
 
-async function pollAlert() {
+async function loadAlerts() {
   try {
     const res = await fetch(ALERT_URL, { cache:'no-store' });
-    if (!res.ok) return;
-    const alert = await res.json();
-    handleAlert(alert);
-  } catch(e) { console.warn('Alert poll failed', e); }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const alerts = await res.json();
+    alerts.forEach(handleAlert);
+  } catch (err) {
+    console.error('Failed to load alerts.json', err);
+  }
 }
 
-function startEventSource() {
-  const es = new EventSource(STREAM_URL);
-  es.onmessage = e => { try { handleAlert(JSON.parse(e.data)); } catch(_){} };
-  es.onerror = () => { es.close(); startPolling(); };
+function startAlerts() {
+  loadAlerts();
+  setInterval(loadAlerts, POLL_INTERVAL);
 }
 
-function startPolling() {
-  pollAlert();
-  setInterval(pollAlert, POLL_INTERVAL);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  if ('EventSource' in window) startEventSource();
-  else startPolling();
-});
+document.addEventListener('DOMContentLoaded', startAlerts);
